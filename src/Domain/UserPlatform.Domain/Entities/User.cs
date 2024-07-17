@@ -8,6 +8,5 @@ public class User : BaseEntity
     public string Email { get; set; } = default!;
     public string Password { get; set; } = default!;
     public DateTime JoinDate { get; set; }
-    public ICollection<Activity> Activities { get; set; } = default!;
 
 }

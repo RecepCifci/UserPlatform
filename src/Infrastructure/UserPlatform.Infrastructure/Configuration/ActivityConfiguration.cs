@@ -14,10 +14,6 @@ public class ActivityConfiguration : IEntityTypeConfiguration<Activity>
 
         builder.Property(x => x.Description).HasColumnName("Description").HasColumnOrder(2).IsRequired().HasMaxLength(100);
         builder.Property(x => x.Type).HasColumnName("Type").HasColumnOrder(3).IsRequired();
-        builder.Property(x => x.Date).HasColumnName("Date").HasColumnOrder(5).IsRequired();
-
-        builder.HasOne(x => x.User)
-       .WithMany(x => x.Activities)
-       .HasForeignKey(x => x.UserId);
+        builder.Property(x => x.Date).HasColumnName("Date").HasColumnOrder(4).IsRequired();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using UserPlatform.Domain.Entities;
 using UserPlatform.Infrastructure.Configuration;
 
@@ -14,6 +15,7 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         {
             throw new ArgumentNullException(nameof(modelBuilder));
         }
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new ActivityConfiguration());

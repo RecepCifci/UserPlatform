@@ -6,13 +6,14 @@ namespace UserPlatform.Infrastructure;
 
 public static class IServiceCollectionExtension
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration, ServiceLifetime serviceLifetime = ServiceLifetime.Scoped)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), opt => { opt.EnableRetryOnFailure(); });
+            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+                options => options.EnableRetryOnFailure(2));
 
-        }, serviceLifetime);
+        });
 
         return services;
     }

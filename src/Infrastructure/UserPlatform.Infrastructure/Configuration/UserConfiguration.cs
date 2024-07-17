@@ -16,9 +16,5 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(x => x.Email).HasColumnName("Email").HasColumnOrder(3).IsRequired().HasMaxLength(100);
         builder.Property(x => x.Password).HasColumnName("Password").HasColumnOrder(4).IsRequired().HasMaxLength(20);
         builder.Property(x => x.JoinDate).HasColumnName("JoinDate").HasColumnOrder(5).IsRequired();
-
-        builder.HasMany(x => x.Activities)
-       .WithOne(x => x.User)
-       .HasForeignKey(x => x.UserId);
     }
 }
