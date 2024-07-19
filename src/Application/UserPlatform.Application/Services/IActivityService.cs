@@ -1,10 +1,10 @@
-﻿using UserPlatform.Domain.Entities;
+﻿using UserPlatform.Application.Dtos;
 
 namespace UserPlatform.Application.Services;
 
 public interface IActivityService
 {
-    public void CreateActivity(Activity activity);
-    public List<Activity> GetUserActivityList(int userId);
-    public List<Activity> GetActivityList();
+    public void CreateActivity(ActivityDto activity);
+    public List<ActivityDto> GetUserActivityList(int userId);
+    public List<ActivityDto> GetActivityList();
 }

@@ -6,4 +6,5 @@ public interface IUserService
 {
     public void CreateUser(User user);
     public List<User> GetUserList();
+    public bool CheckUserIfExists(int userId);
 }

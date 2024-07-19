@@ -14,4 +14,8 @@ public class UserService(ApplicationDbContext applicationDbContext) : BaseReposi
     {
         return GetList().ToList();
     }
+    public bool CheckUserIfExists(int userId)
+    {
+        return Get(x=> x.Id == userId) != null;
+    }
 }

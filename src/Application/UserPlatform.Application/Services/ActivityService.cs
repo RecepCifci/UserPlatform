@@ -1,22 +1,31 @@
-﻿using UserPlatform.Domain.Entities;
+﻿using AutoMapper;
+using FluentValidation;
+using System;
+using UserPlatform.Application.Dtos;
+using UserPlatform.Domain.Activities.Base;
+using UserPlatform.Domain.Entities;
 using UserPlatform.Infrastructure;
 using UserPlatform.Infrastructure.Repository;
 
 namespace UserPlatform.Application.Services;
 
-public class ActivityService(ApplicationDbContext applicationDbContext) : BaseRepository<Activity, ApplicationDbContext>(applicationDbContext), IActivityService
+public class ActivityService(ApplicationDbContext applicationDbContext, IMapper mapper, IBaseActivity baseActivity) : BaseRepository<Activity, ApplicationDbContext>(applicationDbContext), IActivityService
 {
 
-    public void CreateActivity(Activity activity)
+    public void CreateActivity(ActivityDto activity)
     {
-        Add(activity);
+        Add(mapper.Map<Activity>(activity));
     }
-    public List<Activity> GetUserActivityList(int userId)
+    public List<ActivityDto> GetUserActivityList(int userId)
     {
-        return GetList(x => x.UserId == userId).ToList() ?? throw new Exception($"{userId} idli kullanıcıya ait aktivite bulunamadı");
+        return mapper.Map<List<ActivityDto>>(GetList(x => x.UserId == userId).ToList()) ?? throw new Exception($"{userId} idli kullanıcıya ait aktivite bulunamadı");
     }
-    public List<Activity> GetActivityList()
+    public List<ActivityDto> GetActivityList()
     {
-        return GetList().ToList() ?? throw new Exception($"Sistemde aktivite bulunamadı");
+        return mapper.Map<List<ActivityDto>>(GetList().ToList()) ?? throw new Exception($"Sistemde aktivite bulunamadı");
+    }
+    public List<ActivityDto> GetActivityListByType(int type)
+    {
+        return mapper.Map<List<ActivityDto>>(GetList().ToList()) ?? throw new Exception($"Sistemde aktivite bulunamadı");
     }
 }

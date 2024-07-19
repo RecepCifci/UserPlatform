@@ -13,7 +13,7 @@ public class ActivityConfiguration : IEntityTypeConfiguration<Activity>
         builder.Property(x => x.Id).HasColumnName("Id").HasColumnOrder(1).IsRequired().ValueGeneratedOnAdd();
 
         builder.Property(x => x.Description).HasColumnName("Description").HasColumnOrder(2).IsRequired().HasMaxLength(100);
-        builder.Property(x => x.Type).HasColumnName("Type").HasColumnOrder(3).IsRequired();
+        //builder.Property(x => x.Type).HasColumnName("Type").HasColumnOrder(3).IsRequired();
         builder.Property(x => x.Date).HasColumnName("Date").HasColumnOrder(4).IsRequired();
     }
 }
