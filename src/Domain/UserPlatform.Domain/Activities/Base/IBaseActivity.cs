@@ -5,4 +5,5 @@ namespace UserPlatform.Domain.Activities.Base;
 public interface IBaseActivity
 {
     public Activity SetActivityType(Activity activity);
+    public string GetDescription();
 }

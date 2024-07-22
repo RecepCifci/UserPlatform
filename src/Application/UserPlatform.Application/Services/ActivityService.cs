@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
-using System;
 using UserPlatform.Application.Dtos;
 using UserPlatform.Domain.Activities.Base;
 using UserPlatform.Domain.Entities;

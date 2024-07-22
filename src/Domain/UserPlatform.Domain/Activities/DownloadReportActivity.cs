@@ -5,6 +5,11 @@ namespace UserPlatform.Domain.Activities;
 
 public class DownloadReportActivity : IBaseActivity
 {
+    public string GetDescription()
+    {
+        return "Report Downloaded";
+    }
+
     public Activity SetActivityType(Activity activity)
     {
         activity.Type = Enums.ActivityTypes.DownloadReport;

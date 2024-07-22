@@ -9,5 +9,6 @@ public class MappingConfig : Profile
     public MappingConfig()
     {
         CreateMap<Activity, ActivityDto>().ReverseMap();
+        CreateMap<User, UserDto>().ReverseMap();
     }
 }
